@@ -2,8 +2,8 @@
 [![Actions Status](https://github.com/Codibre/dotnet-sqlserver-connection-mock/workflows/test/badge.svg)](https://github.com/Codibre/dotnet-sqlserver-connection-mock/actions)
 [![Actions Status](https://github.com/Codibre/dotnet-sqlserver-connection-mock/workflows/lint/badge.svg)](https://github.com/Codibre/dotnet-sqlserver-connection-mock/actions)
 [![benchmark](https://github.com/Codibre/dotnet-sqlserver-connection-mock/actions/workflows/benchmark.yml/badge.svg)](https://github.com/Codibre/dotnet-sqlserver-connection-mock/actions/workflows/benchmark.yml)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/d97994e24ee6b162c626/test_coverage)](https://codeclimate.com/github/codibre/dotnet-sqlserver-connection-mock/test_coverage)
-[![Maintainability](https://api.codeclimate.com/v1/badges/d97994e24ee6b162c626/maintainability)](https://codeclimate.com/github/codibre/dotnet-sqlserver-connection-mock/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/e1533fd2a8f3fb66fd27/test_coverage)](https://codeclimate.com/github/codibre/dotnet-sqlserver-connection-mock/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/e1533fd2a8f3fb66fd27/maintainability)](https://codeclimate.com/github/codibre/dotnet-sqlserver-connection-mock/maintainability)
 
 SqlServer mocking library for unit tests that uses Sqlite in-memory under the hood.
 
@@ -19,13 +19,21 @@ First, import the application namespace:
 using Codibre.SqlServerMock
 ```
 
-Now, create your connection using MssqlMockDbConnection.
-You'll need to create every database entity using SqlLite commands in your unit tests.
+Now, create your connection using **MssqlMockDbConnection**.
+You'll need to create every table entity using SqlLite commands in your unit tests.
 For now, this library will only work with a limited number of SELECT queries.
 
-Here's a list of different idiomatics already treated here:
+Here's a list of idiomatics differences already treated here:
 
-* TOP => LIMIT
+* TOP => LIMIT;
+* (NOLOCK) => Removed as Sqlite doesn't have anything like that;
+* CONCAT Function => Little hacky but replaced using regex by || operator. Need to be refactored by using parsed TSqlFragment;  
+
+## What comes next?
+
+Anything that comes in the way of unit testing sql server repositories can be converted here, but be aware, that this library has no intention at all of reflecting every possible SQL Server functionality using in-memory SqlLite: it is absolutely impossible!
+But we believe is commom sense that the most commom used ones are expected to be possible to convert.
+Although we know that not everything will be possible to cover, having a least a good part of the repository layer unit tested, can really put the quality of a project to another level!
 
 ## License
 

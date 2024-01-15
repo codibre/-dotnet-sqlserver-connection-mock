@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 using Microsoft.Data.Sqlite;
 using Microsoft.SqlServer.TransactSql.ScriptDom;
 
-namespace BrokerPaymentApi.Test.Repositories
+namespace Codibre.SqlServerMock
 {
     public class MssQlMockDbCommand : DbCommand, IDbCommand
     {

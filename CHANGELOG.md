@@ -1,3 +1,10 @@
+## [0.1.1](https://github.com/codibre/dotnet-sqlserver-connection-mock/compare/v0.1.0...v0.1.1) (2024-01-15)
+
+
+### Bug Fixes
+
+* fixing readme refernece in csproj ([fe8b0d1](https://github.com/codibre/dotnet-sqlserver-connection-mock/commit/fe8b0d19f38bb25f39ea907c91c16368a96609d4))
+
 # [0.1.0](https://github.com/codibre/dotnet-sqlserver-connection-mock/compare/v0.0.1...v0.1.0) (2024-01-15)
 
 

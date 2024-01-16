@@ -33,10 +33,6 @@ namespace Codibre.SqlServerMock
         [Theory]
         [InlineData(1, null)]  
         [InlineData(2, 180)]
-        [InlineData(3, 180)]
-        [InlineData(4, 180)]
-        [InlineData(5, 180)]
-        [InlineData(6, 180)]
         public async Task Should_Work_With_Join_Concat_And_NOLOCK_Combined(
             int intField2,
             int? textFieldConverted

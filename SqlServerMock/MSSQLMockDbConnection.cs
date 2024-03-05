@@ -162,26 +162,24 @@ namespace Codibre.SqlServerMock
         protected override DbDataReader ExecuteDbDataReader(CommandBehavior behavior) => _comm.ExecuteReader();
     }
 
-    public class MssqlMockDbConnection : IDbConnection
+    public class MssqlMockDbConnection : DbConnection
     {
         public SqliteConnection _conn = new SqliteConnection("Filename=:memory:");
-        public string ConnectionString { get => _conn.ConnectionString; set => throw new NotImplementedException(); }
+        public override string ConnectionString { get => _conn.ConnectionString; set => throw new NotImplementedException(); }
 
-        public int ConnectionTimeout => 999999999;
+        public override int ConnectionTimeout => 999999999;
 
-        public string Database => _conn.Database;
+        public override string Database => _conn.Database;
 
-        public ConnectionState State => _conn.State;
+        public override ConnectionState State => _conn.State;
 
-        public IDbTransaction BeginTransaction() => _conn.BeginTransaction();
+        public override string DataSource => _conn.DataSource;
 
-        public IDbTransaction BeginTransaction(System.Data.IsolationLevel il) => _conn.BeginTransaction(il);
+        public override string ServerVersion => _conn.ServerVersion;
 
-        public void ChangeDatabase(string databaseName) => _conn.ChangeDatabase(databaseName);
+        public override void ChangeDatabase(string databaseName) => _conn.ChangeDatabase(databaseName);
 
-        public void Close() => _conn.Close();
-
-        public IDbCommand CreateCommand() => new MssQlMockDbCommand(_conn.CreateCommand());
+        public override void Close() => _conn.Close();
         
         public void Dispose()
         {
@@ -193,6 +191,10 @@ namespace Codibre.SqlServerMock
             _conn.Dispose();
         }
 
-        public void Open() => _conn.Open();
+        public override void Open() => _conn.Open();
+
+        protected override DbTransaction BeginDbTransaction(System.Data.IsolationLevel isolationLevel) => _conn.BeginTransaction();
+
+        protected override DbCommand CreateDbCommand() => new MssQlMockDbCommand(_conn.CreateCommand());
     }
 }

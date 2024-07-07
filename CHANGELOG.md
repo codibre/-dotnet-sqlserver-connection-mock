@@ -1,3 +1,10 @@
+## [0.1.2](https://github.com/codibre/dotnet-sqlserver-connection-mock/compare/v0.1.1...v0.1.2) (2024-07-07)
+
+
+### Bug Fixes
+
+* inheriting DBConnection for more support ([7880f5b](https://github.com/codibre/dotnet-sqlserver-connection-mock/commit/7880f5bd1a28fded42ff258a6c9e1c61bc5b5812))
+
 ## [0.1.1](https://github.com/codibre/dotnet-sqlserver-connection-mock/compare/v0.1.0...v0.1.1) (2024-01-15)
 
 
